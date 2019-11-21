@@ -1,6 +1,6 @@
 const login = {
     state: {
-        aaaa: "1000"
+        aaaa: "元数据管理系统"
     },
     getters: {},
     mutations: {},

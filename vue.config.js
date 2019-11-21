@@ -1,9 +1,8 @@
 const path = require('path');
 module.exports = {
-  // 基本路径
-  publicPath: process.env.NODE_ENV === 'production' ? '' : '/',
   // 输出文件目录
-  outputDir: process.env.NODE_ENV === 'production' ? 'dist' : 'devdist',
+  //outputDir: process.env.NODE_ENV === 'production' ? 'dist' : 'devdist',
+  
   // eslint-loader 是否在保存的时候检查
   lintOnSave: false,
   /** vue3.0内置了webpack所有东西，
@@ -68,22 +67,22 @@ module.exports = {
     https: false, // 编译失败时刷新页面
     hot: true, // 开启热加载
     hotOnly: false,
-    proxy: null, // 设置代理
-    // proxy: {
-    //   '/devApi': {
-    //       target: "http://www.web-jshtml.cn/productapi", //API服务器的地址  http://www.web-jshtml.cn/api
-    //       changeOrigin: true,
-    //       pathRewrite: {
-    //           '^/devApi': ''
-    //       }
-    //   }
-    // },
+    // proxy: null, // 设置代理
+    proxy: {
+      '/meta': {
+          target: "http://api.meta.com/", //API服务器的地址 
+          //secure: false, // 如果是https接口，需要配置这个参数
+          changeOrigin: true,
+          pathRewrite: {
+              '^/meta': ''
+          }
+      }
+    },
     overlay: { // 全屏模式下是否显示脚本错误
       warnings: true,
       errors: true
     },
-    before: app => {
-    }
+    before: app => {}
   },
   /**
    * 第三方插件配置

@@ -2,19 +2,20 @@
     <div id="main-wrap">
         <div class="main-content">
             <div class="content">
-                {{ bbbb }}
+                {{ bbb }}
                 <router-view />
             </div>
         </div>
     </div>
 </template>
+
 <script>
 import { ref, reactive } from '@vue/composition-api';
 export default {
     name: 'layoutMain',
     setup(props, { root }){
 
-        const bbbb = root.$store.state.login.aaaa
+        const bbb = root.$store.state.login.aaaa
 
         const testClick = () => {
             root.$store.dispatch('test')
@@ -22,15 +23,17 @@ export default {
 
         return {
             testClick,
-            bbbb
+            bbb
         }
     }
 }
 </script>
+
 <style lang="scss" scoped>
 @import "../../../styles/config.scss";
 #main-wrap {
     height: 100vh;
+    overflow: auto;
     // position: fixed;
     // left: $navMenu;
     // top: 75px;

@@ -1,9 +1,9 @@
 <template>
-    <div>信息分类</div>
+    <div>数据库</div>
 </template>
 <script>
 export default {
-    name: 'infoIndex',
+    name: 'metaDatabase',
     setup(props) {
         
     }

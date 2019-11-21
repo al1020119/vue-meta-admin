@@ -1,16 +1,17 @@
 <template>
     <div id="nav-wrap">
         <h1 class="logo"><img src="../../../assets/logo.png" alt=""></h1>
+        <h1 class="meta-title" v-show="!isCollapse"><li>元数据管理系统</li></h1>
         <el-menu 
           default-active="1-4-1" 
           class="el-menu-vertical-demo" 
-          :collapse="isCollapse" 
+          :collapse="isCollapse"
           background-color="transparent" 
           text-color="#fff" 
           active-text-color	="#fff"
           router>
           <template v-for="(item, index) in routers">
-            <el-submenu v-if="!item.hidden" :key="item.id" :index="index + ''">
+            <el-submenu v-show="!item.hidden" :key="item.id" :index="index + ''">
               <!-- 一级菜单 -->
               <template slot="title">
                 <svg-icon :iconClass="item.meta.icon" :className="item.meta.icon" />
@@ -24,6 +25,7 @@
         
     </div>
 </template>
+
 <script>
 import { reactive, computed } from '@vue/composition-api';
 export default {
@@ -45,6 +47,7 @@ export default {
     }
 }
 </script>
+
 <style lang="scss" scoped>
 @import "../../../styles/config.scss";
 .logo {
@@ -55,7 +58,20 @@ export default {
     @include webkit(transition, all .3s ease 0s);
   }
 }
+// 登录标题
+.meta-title {
+    text-align: center;
+    li {
+        display: inline-block;
+        //width: 200px;
+        line-height: 100px;
+        font-size: 20px;
+        color: #fff;
+        border-radius: 2px;
+    }
+}
 #nav-wrap {
+  overflow: auto;
   position: fixed;
   top: 0;
   left: 0;

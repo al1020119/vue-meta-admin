@@ -6,10 +6,11 @@
                 <img src="../../../assets/images/face.jpg" alt="">
                 管理员
             </div>
-            <div class="header-icon pull-left"><svg-icon iconClass="exit" className="exit" /></div>
+            <div class="header-icon pull-left" @click="navExitAxtion"><svg-icon iconClass="exit" className="exit"/></div>
         </div>
     </div>
 </template>
+
 <script>
 export default {
     name: 'layoutHeader',
@@ -17,12 +18,18 @@ export default {
         const navMenuState = () => {
             root.$store.commit('SET_COLLAPSE')
         }
+        const navExitAxtion = () => {
+            root.$router.push({name: 'Login'})
+            console.log('-------');
+        }
         return {
-            navMenuState
+            navMenuState,
+            navExitAxtion
         }
     }
 }
 </script>
+
 <style lang="scss" scoped>
 @import "../../../styles/config.scss";
 #header-wrap {

@@ -6,6 +6,10 @@ Vue.use(VueRouter);
 // 引入布局组件
 import Layout from '@/views/Layout'
 
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 const routes = [
   {
     path: "/",
@@ -44,33 +48,6 @@ const routes = [
       }
     ]
   },
-  {
-    path: "/info",
-    name: "Info",
-    meta: {
-      name: "信息管理",
-      icon: 'info'
-    },
-    component: Layout,
-    children: [
-      {
-        path: "/infoIndex",
-        name: "InfoIndex",
-        meta: {
-          name: "信息列表"
-        },
-        component: () => import("../views/Info/index.vue")
-      },
-      {
-        path: "/infoCategory",
-        name: "InfoCategory",
-        meta: {
-          name: "信息分类"
-        },
-        component: () => import("../views/Info/category.vue")
-      }
-    ]
-  },
   /**
    * 用户管理
    */
@@ -90,6 +67,107 @@ const routes = [
           name: "用户列表"
         },
         component: () => import("../views/User/index.vue")
+      }
+    ]
+  },
+  {
+    path: "/meta",
+    name: "Meta",
+    meta: {
+      name: "元数据管理",
+      icon: 'meta'
+    },
+    component: Layout,
+    children: [
+      {
+        path: "/metaIndex",
+        name: "metaIndex",
+        meta: {
+          name: "汇总"
+        },
+        component: () => import("../views/Meta/index.vue")
+      },
+      {
+        path: "/metaDatabase",
+        name: "MetaDatabase",
+        meta: {
+          name: "数据库"
+        },
+        component: () => import("../views/Meta/database.vue")
+      },
+      {
+        path: "/metaWarehouse",
+        name: "MetaWarehouse",
+        meta: {
+          name: "数据仓库"
+        },
+        component: () => import("../views/Meta/warehouse.vue")
+      },
+      {
+        path: "/metaDatacache",
+        name: "MetaDatacache",
+        meta: {
+          name: "数据缓存"
+        },
+        component: () => import("../views/Meta/datacache.vue")
+      },
+      {
+        path: "/metaMsgqueue",
+        name: "MetaMsgqueue",
+        meta: {
+          name: "消息队列"
+        },
+        component: () => import("../views/Meta/msgqueue.vue")
+      },
+      {
+        path: "/metaDatanosql",
+        name: "MetaDatanosql",
+        meta: {
+          name: "NoSQL"
+        },
+        component: () => import("../views/Meta/datanosql.vue")
+      }
+
+      ,
+      {
+        path: "/metaDatabase",
+        name: "MetaDatabase",
+        meta: {
+          name: "数据库"
+        },
+        component: () => import("../views/Meta/database.vue")
+      },
+      {
+        path: "/metaWarehouse",
+        name: "MetaWarehouse",
+        meta: {
+          name: "数据仓库"
+        },
+        component: () => import("../views/Meta/warehouse.vue")
+      },
+      {
+        path: "/metaDatacache",
+        name: "MetaDatacache",
+        meta: {
+          name: "数据缓存"
+        },
+        component: () => import("../views/Meta/datacache.vue")
+      },
+      {
+        path: "/metaMsgqueue",
+        name: "MetaMsgqueue",
+        meta: {
+          name: "消息队列"
+        },
+        component: () => import("../views/Meta/msgqueue.vue")
+      },
+      {
+        path: "/metaDatanosql",
+        name: "MetaDatanosql",
+        meta: {
+          name: "NoSQL"
+        },
+        component: () => import("../views/Meta/datanosql.vue")
       }
     ]
   }

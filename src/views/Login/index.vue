@@ -9,7 +9,6 @@
                 <!-- @click="toggleTitle()" 函数绑定 -->
                 <!-- 'current': isActive ||  -->
                 <li v-for="item in loginTitle" :key="item.id" :class="{'current': isActive && item.current}" @click="toggleTitle(item)">{{ item.title }}</li>
-                <!-- <li v-for="item in loginTitle" :key="item.id" :class="{'current': isActive && item.current}" @click="queryLogin()">{{ item.title }}</li> -->
             </ul>
 
             <!-- 登录表单 -->
@@ -35,6 +34,11 @@
 
 <script>
 import { stripscript } from '@/utils/validate.js'
+
+// 登录请求操作
+import { Login } from '@/api/login.js' 
+import { setToken } from '@/api/services/cookie.js'
+
 export default {
     name: "login",
     data() {
@@ -94,47 +98,26 @@ export default {
         // js 操作DOM元素
         // 点击标题操作
         toggleTitle(item) {
-            this.loginTitle.forEach((elem,index) => {
-                elem.current = false;
-            })
-            //for(let i=0;i<this.loginTitle.length;i++) {}
-            item.current = true;
             console.log(item);
-        },
-        // 登录接口测试
-        queryLogin() {
-            this.$axios.post(
-                'http://api.meta.com/user/login.html',
-                {
-                    username: 'admin',
-                    password_hash: '111111',
-                    rememberMe: '1'
-                }
-            )
-            .then(function(response) {
-                console.log(response);
-            })
-            .catch(error => (console.log(error)));
         },
         // 提交按钮点击
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
             if (valid) {
-                alert('submit!');
                 let _this = this;
-                // 发起网络请求，使用POST登录操作并拿到用户信息
-                this.$axios.post('http://api.meta.com/user/login.html',
-                    {
+                let params = {
                         username: this.ruleForm.username,
                         password_hash: this.ruleForm.password,
                         rememberMe: '1'
                     }
-                ).then(function(response) {
-                    console.log(response);
+                Login(params).then(res => {
+                    setToken(res.data.token);
+                    this.$message.success("恭喜你，登录成功");
                     _this.$router.push({name:"Console"})
-                }).catch(error => (console.log(error)));
+                }).catch(error => {
+                    console.log(error);
+                })
             } else {
-                console.log('error submit!!');
                 return false;
             }
             });

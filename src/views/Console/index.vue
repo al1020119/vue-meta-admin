@@ -1,5 +1,5 @@
 <template>
-    <div>控制台首页</div>
+    <div>控制台首页: 做可视化面板用</div>
 </template>
 <script>
     export default {

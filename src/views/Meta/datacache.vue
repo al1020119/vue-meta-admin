@@ -1,14 +1,14 @@
 <template>
-    <div>信息列表</div>
+    <div>数据缓存</div>
 </template>
 <script>
 export default {
-    name: 'infoIndex',
+    name: 'metaDatacache',
     setup(props) {
         
     }
 }
 </script>
-<style lang="scss" scoped>
+<style scoped>
 
 </style>
