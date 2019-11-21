@@ -36,7 +36,7 @@
 import { stripscript } from '@/utils/validate.js'
 
 // 登录请求操作
-import { Login } from '@/api/login.js' 
+import { Login } from '@/api/user.js' 
 import { setToken } from '@/api/services/cookie.js'
 
 export default {

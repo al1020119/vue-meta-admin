@@ -21,6 +21,8 @@
 </template>
 
 <script>
+// 登录请求操作
+import { List } from '@/api/user.js' 
 export default {
   data() {
     return {
@@ -127,7 +129,7 @@ export default {
         },
         {
           date: "2016-05-01",
-          name: "王小虎",
+          name: "王小哎",
           address: "上海市普陀区金沙江路 1519 弄"
         },
         {
@@ -142,12 +144,12 @@ export default {
         },
         {
           date: "2016-05-04",
-          name: "王小虎",
+          name: "王小你",
           address: "上海市普陀区金沙江路 1517 弄"
         },
         {
           date: "2016-05-01",
-          name: "王小虎",
+          name: "王已虎",
           address: "上海市普陀区金沙江路 1519 弄"
         },
         {
@@ -157,17 +159,17 @@ export default {
         },
         {
           date: "2016-05-01",
-          name: "王小虎",
+          name: "曹",
           address: "上海市普陀区金沙江路 1519 弄"
         },
         {
           date: "2016-05-04",
-          name: "王小虎",
+          name: "草擦",
           address: "上海市普陀区金沙江路 1517 弄"
         },
         {
           date: "2016-05-01",
-          name: "王小虎",
+          name: "曹理鹏",
           address: "上海市普陀区金沙江路 1519 弄"
         },
         {
@@ -178,6 +180,17 @@ export default {
       ],
       search: ""
     };
+  },
+  created(){
+      console.log('created');
+  },
+  mounted(){
+      List(null).then(res => {
+                console.log("用户列表加载");
+            console.log(res);
+        }).catch(error => {
+            console.log(error);
+        })
   },
   methods: {
     handleEdit(index, row) {
