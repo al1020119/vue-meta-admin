@@ -15,8 +15,11 @@ import axios from "axios";
 // 引入Vue最新体验版
 import VueCompositionApi from '@vue/composition-api';
 
-// 自定义全局组件：SVG图展示
-import "./icons";
+// 自定义全局组件：
+// SVG图展示
+import "@/icons";
+// 全局样式表
+import '@/components/components.css'
 
 // 引入D3.js做图表展示(前期主要用于仪表盘，后期会作为新版BI系统的核心)
 import * as d3 from 'd3';

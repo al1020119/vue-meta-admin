@@ -29,6 +29,8 @@ requset.interceptors.response.use(
   response => {
     const data = response.data // {code , message , data}
     if(data.code === 200){
+      console.log(this);
+      console.log(data);
       return Promise.resolve(data)
     }else {
       Message({
