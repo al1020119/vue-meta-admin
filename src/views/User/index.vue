@@ -16,7 +16,7 @@
         </template>
       </el-table-column>
     </el-table>
-      <!-- <el-pagination background layout="prev, pager, next" :total="1000"></el-pagination> -->
+      <el-pagination background layout="prev, pager, next" :total="1000" class="pagination"></el-pagination>
   </div>
 </template>
 
@@ -189,3 +189,10 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.pagination {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+</style>

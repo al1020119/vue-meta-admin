@@ -127,48 +127,6 @@ const routes = [
         },
         component: () => import("../views/Meta/datanosql.vue")
       }
-
-      ,
-      {
-        path: "/metaDatabase",
-        name: "MetaDatabase",
-        meta: {
-          name: "数据库"
-        },
-        component: () => import("../views/Meta/database.vue")
-      },
-      {
-        path: "/metaWarehouse",
-        name: "MetaWarehouse",
-        meta: {
-          name: "数据仓库"
-        },
-        component: () => import("../views/Meta/warehouse.vue")
-      },
-      {
-        path: "/metaDatacache",
-        name: "MetaDatacache",
-        meta: {
-          name: "数据缓存"
-        },
-        component: () => import("../views/Meta/datacache.vue")
-      },
-      {
-        path: "/metaMsgqueue",
-        name: "MetaMsgqueue",
-        meta: {
-          name: "消息队列"
-        },
-        component: () => import("../views/Meta/msgqueue.vue")
-      },
-      {
-        path: "/metaDatanosql",
-        name: "MetaDatanosql",
-        meta: {
-          name: "NoSQL"
-        },
-        component: () => import("../views/Meta/datanosql.vue")
-      }
     ]
   }
 ];
