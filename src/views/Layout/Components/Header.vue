@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { removeToken } from '@/api/services/cookie.js'
 export default {
     name: 'layoutHeader',
     setup(props, { root }){
@@ -19,6 +20,7 @@ export default {
             root.$store.commit('SET_COLLAPSE')
         }
         const navExitAxtion = () => {
+            removeToken()
             root.$router.push({name: 'Login'})
             console.log('-------');
         }

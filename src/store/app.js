@@ -1,4 +1,6 @@
-
+/**
+ *  存放 公共 数据
+ */
 const app = {
     state: {
         isCollapse: JSON.parse(sessionStorage.getItem('isCollapse')) || false

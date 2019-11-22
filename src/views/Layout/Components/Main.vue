@@ -2,7 +2,7 @@
     <div id="main-wrap">
         <div class="main-content">
             <div class="content">
-                {{ bbb }}
+
                 <router-view />
             </div>
         </div>
@@ -14,16 +14,11 @@ import { ref, reactive } from '@vue/composition-api';
 export default {
     name: 'layoutMain',
     setup(props, { root }){
-
-        const bbb = root.$store.state.login.aaaa
-
         const testClick = () => {
             root.$store.dispatch('test')
         }
-
         return {
             testClick,
-            bbb
         }
     }
 }

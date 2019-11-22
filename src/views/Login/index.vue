@@ -33,8 +33,8 @@
 </template>
 
 <script>
-import { stripscript } from '@/utils/validate.js'
 
+import { stripscript } from '@/utils/validate.js'
 // 登录请求操作
 import { Login } from '@/api/user.js' 
 import { setToken } from '@/api/services/cookie.js'
@@ -103,24 +103,37 @@ export default {
         // 提交按钮点击
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
-            if (valid) {
-                let _this = this;
-                let params = {
-                        username: this.ruleForm.username,
-                        password_hash: this.ruleForm.password,
-                        rememberMe: '1'
-                    }
-                Login(params).then(res => {
-                    setToken(res.data.token);
-                    this.$message.success("恭喜你，登录成功");
-                    _this.$router.push({name:"Console"})
-                }).catch(error => {
-                    console.log(error);
-                })
-            } else {
-                return false;
-            }
+                if (valid) {
+                    let _this = this;
+                    let params = {
+                            username: this.ruleForm.username,
+                            password_hash: this.ruleForm.password,
+                            rememberMe: '1'
+                        }
+                    Login(params).then(res => {
+                        // 保存token
+                        setToken(res.data.auth_key);
+                        // 保存用户信息
+                        this.saveUserInfo(res);
+                        // 登录成功提示
+                        this.$message.success("恭喜你，登录成功");
+                        // 页面路由跳转
+                        _this.$router.push({name:"Console"});
+                    }).catch(error => {
+                        console.log(error);
+                    })
+                } else {
+                    return false;
+                }
             });
+       },
+       saveUserInfo(res) {
+           this.$store.commit('saveAuthKey',res.data.auth_key)
+           this.$store.commit('saveUsername',res.data.username)
+           this.$store.commit('saveUserLevel',res.data.user_level)
+           this.$store.commit('saveEmail',res.data.email)
+           this.$store.commit('saveStatus',res.data.status)
+           this.$store.commit('saveRemarks',res.data.remarks)
        }
     },
     props: {},
