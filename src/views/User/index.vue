@@ -31,8 +31,7 @@
       </el-table-column>
       <el-table-column label="状态" align="center" width="80px">
         <template slot-scope="scope">
-          <el-switch v-model="scope.row.status" @change="userStateChanged(scope.row.status)">
-          </el-switch>
+          <el-tag type="userStatus[scope.row.status] == 1 ? success : danger">{{userStatus[scope.row.status]}}</el-tag>
         </template>
       </el-table-column>
       <el-table-column label="创建时间" prop="created_at" align="center" width="180px"></el-table-column>
@@ -171,6 +170,11 @@ export default {
         "1": "普通管理员",
         "2": "[普通用户]"
       },
+      userStatus: {
+        "0": "禁用",
+        "1": "使用中",
+      },
+      status_value: true,
 
       // ===========================================================数据请求信息=====================================================================
       // 获取用户列表的参数对象
@@ -353,27 +357,6 @@ export default {
             return this.$message.error("更新用户失败");
           });
       });
-    },
-    userStateChanged(userinfo) {
-      this.$refs.insertUserFormRef.validate(valid => {
-        if (valid) {
-          // 执行更新请求
-          Switch(this.editUserForm)
-            .then(res => {
-              if (res.code != 200) {
-                return this.$message.error('更新用户状态失败！')
-              }
-              this.$message.success('更新用户状态成功！')
-            })
-            .catch(error => {
-          return this.$message.error('更新用户状态失败！')
-            });
-        } else {
-          userinfo.mg_state = !userinfo.mg_state
-          return this.$message.error('更新用户状态失败！')
-        }
-      });
-      // 
     },
     // 删除操作
     deleteDataAction(userId) {

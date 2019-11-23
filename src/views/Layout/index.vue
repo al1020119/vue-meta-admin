@@ -24,7 +24,13 @@ export default {
         return {
             menuStatus
         }
-    }
+    },
+    mounted() {
+        if(!getToken()) {
+            // 页面路由跳转
+            this.$router.push({name:"Login"});
+        }
+    },
 }
 </script>
 
