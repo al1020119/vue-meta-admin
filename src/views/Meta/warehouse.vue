@@ -2,6 +2,7 @@
     <div>数据仓库</div>
 </template>
 <script>
+import { getToken } from '@/api/services/cookie.js'
 export default {
     name: 'metaWarehouse',
     setup(props) {

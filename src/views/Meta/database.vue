@@ -1,8 +1,25 @@
 <template>
   <div>
     <!-- 搜索与添加区域 -->
-    <el-row :gutter="18">
-      <el-col :span="10">
+    <el-row :gutter="10">
+      <!-- 搜索选项：三级联动 -->
+      <el-col :span="3">
+        <el-select v-model="insertDatabaseForm.field_type" filterable placeholder="请选择数据库">
+            <el-option v-for="(item, index) in fieldType" :key="index" :label="item" :value="index"></el-option>
+          </el-select>
+      </el-col>
+      <el-col :span="3">
+        <el-select v-model="insertDatabaseForm.field_type" filterable placeholder="请选择表名">
+            <el-option v-for="(item, index) in fieldType" :key="index" :label="item" :value="index"></el-option>
+          </el-select>
+      </el-col>
+      <el-col :span="3">
+        <el-select v-model="insertDatabaseForm.field_type" filterable placeholder="请选择字段名">
+            <el-option v-for="(item, index) in fieldType" :key="index" :label="item" :value="index"></el-option>
+          </el-select>
+      </el-col>
+      <!-- 输入搜索字段 -->
+      <el-col :span="6">
         <el-input
           placeholder="描述|库|表|字段|类型|值|操作人|备注"
           v-model="requestInfo.search_field"

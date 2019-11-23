@@ -16,6 +16,7 @@ import LayoutMain from './Components/Main'
 // 左边导航布局
 import LayoutNav from './Components/Nav'
 // 组合引入：import { LayoutHeader, LayoutMain, LayoutNav } from './Components'
+import { getToken } from '@/api/services/cookie.js'
 export default {
     name: 'layout',
     components: {LayoutHeader, LayoutMain, LayoutNav}, // 注册组件

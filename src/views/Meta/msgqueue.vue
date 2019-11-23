@@ -2,6 +2,7 @@
     <div>消息队列</div>
 </template>
 <script>
+import { getToken } from '@/api/services/cookie.js'
 export default {
     name: 'metaMsgqueue',
     setup(props) {

@@ -25,6 +25,11 @@ import '@/components/components.css'
 import * as d3 from 'd3';
 Object.defineProperty(Vue.prototype, '$d3', {value: d3});
 
+// 解决在使用element-ui时出现警告：
+// Added non-passive event listener to a scroll-blocking 'mousewheel' event. Consider marking event handler as 'passive' to make the page more responsive. 
+// See https://www.chromestatus.com/feature/57455437
+import 'default-passive-events'
+
 // 使用新版Vue体验版
 Vue.use(VueCompositionApi);
 
