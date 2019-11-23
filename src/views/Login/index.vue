@@ -25,7 +25,7 @@
                 </el-form-item>
                 <!-- 登录俺妞妞 -->
                 <el-form-item>
-                    <el-button type="danger" @click="submitForm('ruleForm')" class="login-btn block">提交</el-button>
+                    <el-button type="danger" @click="submitForm('ruleForm')" class="login-btn block">登录</el-button>
                 </el-form-item>
             </el-form>
         </div>

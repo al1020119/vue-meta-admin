@@ -23,6 +23,7 @@ import '@/components/components.css'
 
 // 引入D3.js做图表展示(前期主要用于仪表盘，后期会作为新版BI系统的核心)
 import * as d3 from 'd3';
+Object.defineProperty(Vue.prototype, '$d3', {value: d3});
 
 // 使用新版Vue体验版
 Vue.use(VueCompositionApi);

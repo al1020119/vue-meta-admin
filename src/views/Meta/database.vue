@@ -492,11 +492,10 @@ export default {
     this.getDatabaseList(); // 获取元数据列表，请求信息已经封装
   },
   mounted() {
-    console.log(getToken())
-    // if(!getToken()) {
-    //     // 页面路由跳转
-    //     this.$router.push({name:"Login"});
-    // }
+    if(!getToken()) {
+        // 页面路由跳转
+        this.$router.push({name:"Login"});
+    }
   },
   methods: {
     // ===========================================================分页操作=====================================================================

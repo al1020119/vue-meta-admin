@@ -83,7 +83,7 @@ const routes = [
         path: "/metaIndex",
         name: "metaIndex",
         meta: {
-          name: "汇总"
+          name: "同步&监控"
         },
         component: () => import("../views/Meta/index.vue")
       },

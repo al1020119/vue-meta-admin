@@ -1,11 +1,14 @@
 <template>
-    <div>控制台首页: 做可视化面板用</div>
+    <div>首页面板</div>
 </template>
 <script>
-    export default {
-
+export default {
+    name: 'consoleIndex',
+    setup(props) {
+        
     }
+}
 </script>
-<style lang="scss" scoped>
+<style scoped>
 
 </style>
