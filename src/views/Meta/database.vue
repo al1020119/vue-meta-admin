@@ -306,7 +306,7 @@ import { List, Insert, Query, Update, Delete } from "@/api/database.js";
 import { getToken } from '@/api/services/cookie.js'
 
 export default {
-  name: 'metaMsgqueue',
+  name: 'metaDatabase',
   data() {
     return {
       // ===========================================================常量枚举数组=====================================================================
