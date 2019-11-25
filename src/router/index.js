@@ -88,6 +88,15 @@ const routes = [
         component: () => import("../views/Meta/index.vue")
       },
       {
+        path: "/metaDimension",
+        name: "MetaDimension",
+        meta: {
+          name: "维度表"
+        },
+        component: () => import("../views/Meta/dimension.vue")
+      },
+      
+      {
         path: "/metaDatabase",
         name: "MetaDatabase",
         meta: {
@@ -126,6 +135,14 @@ const routes = [
           name: "NoSQL"
         },
         component: () => import("../views/Meta/datanosql.vue")
+      },
+      {
+        path: "/metaDatatext",
+        name: "MetaDatatext",
+        meta: {
+          name: "文本内容"
+        },
+        component: () => import("../views/Meta/datatext.vue")
       }
     ]
   }

@@ -1,10 +1,10 @@
 <template>
-    <div>NoSQL</div>
+    <div>维度表</div>
 </template>
 <script>
 import { getToken } from '@/api/services/cookie.js'
 export default {
-    name: 'metaDatanosql',
+    name: 'metaDimension',
     setup(props) {
         
     },

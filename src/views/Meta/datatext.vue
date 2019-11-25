@@ -1,10 +1,10 @@
 <template>
-    <div>NoSQL</div>
+    <div>Text</div>
 </template>
 <script>
 import { getToken } from '@/api/services/cookie.js'
 export default {
-    name: 'metaDatanosql',
+    name: 'metaDatatext',
     setup(props) {
         
     },
