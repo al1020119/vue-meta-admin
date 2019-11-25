@@ -20,16 +20,16 @@
     <!-- id username user_level password_hash auth_key email status created_at updated_at remarks -->
 
     <!-- 用户列表区 -->
-    <el-table :data="userlist" border stripe>
-      <el-table-column type="index" align="center" width="40px"></el-table-column>
-      <el-table-column label="用户名" prop="username" align="center" width="150px"></el-table-column>
-      <el-table-column label="邮箱" prop="email" align="center" width="200px"></el-table-column>
+    <el-table :data="userlist" border stripe fit>
+      <el-table-column type="index" align="center" width="50px"></el-table-column>
+      <el-table-column label="用户名" prop="username" align="center" width="200px"></el-table-column>
+      <el-table-column label="邮箱" prop="email" align="center" width="250px"></el-table-column>
       <el-table-column label="用户级别" align="center" width="180px">
         <template slot-scope="scope">
           <el-tag type="danger">{{userLevel[scope.row.user_level]}}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="状态" align="center" width="80px">
+      <el-table-column label="状态" align="center" width="120px">
         <template slot-scope="scope">
           <el-tag type="userStatus[scope.row.status] == 1 ? success : danger">{{userStatus[scope.row.status]}}</el-tag>
         </template>

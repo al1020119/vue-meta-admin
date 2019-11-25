@@ -5,7 +5,7 @@
     </div>
     <div class="pull-right">
       <div class="user-info pull-left">
-        <el-button type="danger" class="biScreen">可视化大屏</el-button>
+        <!-- <el-button type="danger" class="biScreen">可视化大屏</el-button> -->
         <img src="../../../assets/images/face.jpg" alt />
         管理员
       </div>

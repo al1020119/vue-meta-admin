@@ -91,6 +91,7 @@ const routes = [
         component: () => import("../views/Meta/index.vue")
       },
       */
+     /*
       {
         path: "/metaDimension",
         name: "MetaDimension",
@@ -99,11 +100,12 @@ const routes = [
         },
         component: () => import("../views/Meta/dimension.vue")
       },
+      */
       {
         path: "/metaDatabase",
         name: "MetaDatabase",
         meta: {
-          name: "数据库"
+          name: "数据库元数据"
         },
         component: () => import("../views/Meta/database.vue")
       }

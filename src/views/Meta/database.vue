@@ -2,7 +2,7 @@
   <div>
     
     <!-- 搜索与添加区域 -->
-    <el-row :gutter="10" class="search-box">
+    <el-row :gutter="10">
       <!-- 搜索选项：三级联动 -->
       <el-col :span="3">
         <el-select v-model="requestInfo.source_type" filterable placeholder="请选择数据源" @change="filterSearchTypeChange">
@@ -260,7 +260,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.content-table {
-  margin-top: 15px;
-}
+
 </style>
