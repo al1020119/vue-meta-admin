@@ -118,7 +118,7 @@ export default {
                         // 登录成功提示
                         this.$message.success("恭喜你，登录成功");
                         // 页面路由跳转
-                        _this.$router.push({name:"Console"});
+                        _this.$router.push({name:"Meta"});
                     }).catch(error => {
                         console.log(error);
                     })

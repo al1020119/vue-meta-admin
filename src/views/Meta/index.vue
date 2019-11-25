@@ -1,6 +1,6 @@
 <template>
   <el-tabs v-model="activeName" @tab-click="handleClick">
-    <el-tab-pane label="同步" name="first">
+    <el-tab-pane label="数据库元数据同步" name="first">
       <el-row :gutter="20">
         <el-col :span="8">
             <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
@@ -41,13 +41,6 @@
         </el-col>
       </el-row>
     </el-tab-pane>
-    <el-tab-pane label="维度表" name="second">维度表</el-tab-pane>
-    <el-tab-pane label="数据库" name="third">数据库</el-tab-pane>
-    <el-tab-pane label="数据仓库" name="fourth">数据仓库</el-tab-pane>
-    <el-tab-pane label="数据缓存" name="five">数据缓存</el-tab-pane>
-    <el-tab-pane label="消息队列" name="six">消息队列</el-tab-pane>
-    <el-tab-pane label="NoSQL" name="seven">NoSQL</el-tab-pane>
-    <el-tab-pane label="文本内容" name="eight">文本内容</el-tab-pane>
   </el-tabs>
 </template>
 <script>

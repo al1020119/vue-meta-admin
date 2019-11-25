@@ -28,6 +28,7 @@ const routes = [
     },
     component: () => import("../views/Login/index.vue")
   },
+  /*
   {
     path: "/console",
     name: "Console",
@@ -48,6 +49,7 @@ const routes = [
       }
     ]
   },
+  */
   /**
    * 用户管理
    */
@@ -74,11 +76,12 @@ const routes = [
     path: "/meta",
     name: "Meta",
     meta: {
-      name: "元数据管理",
+      name: "主数据管理",
       icon: 'meta'
     },
     component: Layout,
     children: [
+      /*
       {
         path: "/metaIndex",
         name: "metaIndex",
@@ -87,6 +90,7 @@ const routes = [
         },
         component: () => import("../views/Meta/index.vue")
       },
+      */
       {
         path: "/metaDimension",
         name: "MetaDimension",
@@ -95,7 +99,6 @@ const routes = [
         },
         component: () => import("../views/Meta/dimension.vue")
       },
-      
       {
         path: "/metaDatabase",
         name: "MetaDatabase",
@@ -103,46 +106,6 @@ const routes = [
           name: "数据库"
         },
         component: () => import("../views/Meta/database.vue")
-      },
-      {
-        path: "/metaWarehouse",
-        name: "MetaWarehouse",
-        meta: {
-          name: "数据仓库"
-        },
-        component: () => import("../views/Meta/warehouse.vue")
-      },
-      {
-        path: "/metaDatacache",
-        name: "MetaDatacache",
-        meta: {
-          name: "数据缓存"
-        },
-        component: () => import("../views/Meta/datacache.vue")
-      },
-      {
-        path: "/metaMsgqueue",
-        name: "MetaMsgqueue",
-        meta: {
-          name: "消息队列"
-        },
-        component: () => import("../views/Meta/msgqueue.vue")
-      },
-      {
-        path: "/metaDatanosql",
-        name: "MetaDatanosql",
-        meta: {
-          name: "NoSQL"
-        },
-        component: () => import("../views/Meta/datanosql.vue")
-      },
-      {
-        path: "/metaDatatext",
-        name: "MetaDatatext",
-        meta: {
-          name: "文本内容"
-        },
-        component: () => import("../views/Meta/datatext.vue")
       }
     ]
   }
