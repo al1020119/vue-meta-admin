@@ -189,6 +189,7 @@ export default {
       dataSummary: [],
 
       // 维度设置与操作
+      currentDatabase: [],
       dimensionDialogVisibleStatus: false,
       handlerInfo: {
         id: "",
@@ -260,6 +261,7 @@ export default {
     },
     // 元数据维度切换
     databaseDimensionSwitch(database) {
+      this.currentDatabase = database;
       this.handlerInfo.id = database.id;
       if (database.is_dimension) {
         // 设置维度
@@ -290,10 +292,11 @@ export default {
           .then(() => {
             // 置空维度
             this.handlerInfo.is_dimension = "0";
-            this.handlerInfo.dimension_table = "无";
-            this.setDimensionAction(database);
+            this.handlerInfo.dimension_table = "";
+            this.setDimensionAction();
           })
           .catch(() => {
+            this.currentDatabase.is_dimension = !this.currentDatabase.is_dimension;
             this.$message({
               type: "info",
               message: "已取消变更"
@@ -302,11 +305,14 @@ export default {
       }
     },
     // 变更维度请求操作
-    setDimensionAction(database) {
+    setDimensionAction() {
+      if (this.currentDatabase.is_dimension && !(this.handlerInfo.dimension_table.length > 0)) {
+          return this.$message.error('请选择维度表');
+      }
       DimensionStatus(this.handlerInfo)
         .then(res => {
           if (res.code != 200) {
-            database.is_dimension = !database.is_dimension;
+            this.currentDatabase.is_dimension = !this.currentDatabase.is_dimension;
             return this.$message.error("更新维度失败！");
           }
           this.dimensionDialogVisibleStatus = false;
@@ -314,12 +320,14 @@ export default {
           this.$message.success("更新用户状态成功！");
         })
         .catch(error => {
-          database.is_dimension = !database.is_dimension;
+          this.currentDatabase.is_dimension = !this.currentDatabase.is_dimension;
           return this.$message.error("更新维度失败！");
         });
     },
     // 关闭弹窗操作
     closeDialog() {
+      this.currentDatabase.is_dimension = !this.currentDatabase.is_dimension;
+      this.handlerInfo.dimension_table = '';
       this.dimensionDialogVisibleStatus = false;
     },
     // ===========================================================网络请求方法=====================================================================
