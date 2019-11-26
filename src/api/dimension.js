@@ -19,7 +19,12 @@ export function Query(params) {
 export function Update(params) {
   return postAxios('dimension/update-dimension.html', params)
 }
+
 // 删除维度
 export function Delete(params) {
   return postAxios('dimension/deletae-dimension.html', params)
+}
+
+export function DimensionTable(params) {
+  return getAxios('dimension/get-dimension-table.html', params)
 }

@@ -45,10 +45,10 @@
       <el-table-column label="源表名" prop="source_table" align="center" width="180px"></el-table-column>
       <el-table-column label="源字段名" prop="source_field" align="center" width="120px"></el-table-column>
 
-      <el-table-column label="创建人" prop="created_by" align="center" width="100px"></el-table-column>
+      <!-- <el-table-column label="创建人" prop="created_by" align="center" width="100px"></el-table-column>
       <el-table-column label="创建时间" prop="created_at" align="center" width="138px"></el-table-column>
       <el-table-column label="更新人" prop="updated_by" align="center"></el-table-column>
-      <el-table-column label="更新时间" prop="updated_at" align="center" width="138px"></el-table-column>
+      <el-table-column label="更新时间" prop="updated_at" align="center" width="138px"></el-table-column> -->
       
       <el-table-column label="备注" prop="comment" align="center"></el-table-column>
 

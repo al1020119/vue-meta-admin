@@ -23,3 +23,7 @@ export function FieldName(params) {
 export function DataSummary(params) {
   return getAxios('database/get-data-summary.html', params)
 }
+
+export function DimensionStatus(params) {
+  return postAxios('database/set-dimension-status.html', params)
+}

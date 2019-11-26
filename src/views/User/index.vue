@@ -35,6 +35,7 @@
         </template>
       </el-table-column>
       <el-table-column label="创建时间" prop="created_at" align="center" width="180px"></el-table-column>
+      <el-table-column label="更新时间" prop="updated_at" align="center" width="180px"></el-table-column>
       <el-table-column label="用户备注" prop="remarks" align="center" width="150px"></el-table-column>
       <el-table-column label="操作" width="180px" align="center">
         <template slot-scope="scope">
@@ -65,6 +66,7 @@
       </el-table-column>
     </el-table>
 
+    <!-- 分页控件 -->
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
@@ -170,12 +172,11 @@ export default {
         "1": "普通管理员",
         "2": "[普通用户]"
       },
+      // 用户状态
       userStatus: {
         "0": "禁用",
         "1": "使用中",
       },
-      status_value: true,
-
       // ===========================================================数据请求信息=====================================================================
       // 获取用户列表的参数对象
       requestInfo: {
@@ -197,10 +198,8 @@ export default {
       },
       queryUser: { id: "" },
       editUserForm: {},
-
       // ===========================================================用户列表和独立信息=====================================================================
       userlist: [],
-
       // ===========================================================弹窗显示状态=====================================================================
       // 插入弹窗显示状态
       insertDialogVisibleStatus: false,
@@ -390,7 +389,6 @@ export default {
           });
         });
     },
-
     // ===========================================================待处理项=====================================================================
     // 操作日志点击
     changeUserPassword(userId) {
