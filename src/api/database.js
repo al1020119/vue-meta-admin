@@ -27,3 +27,7 @@ export function DataSummary(params) {
 export function DimensionStatus(params) {
   return postAxios('database/set-dimension-status.html', params)
 }
+
+export function DimensionRecord(params) {
+  return getAxios('database-record/get-database-record-list.html', params)
+}

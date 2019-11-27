@@ -137,6 +137,26 @@
         <el-button type="primary" @click="setDimensionAction">确 定</el-button>
       </span>
     </el-dialog>
+
+    <!-- 操作日志对话框 -->
+    <el-dialog
+      title="操作日志"
+      :visible.sync="recordDialogVisibleStatus"
+      width="30%"
+    >
+      <el-table :data="recordlist" border stripe class="content-table">
+            <el-table-column type="index" align="center" width="40px"></el-table-column>
+            <el-table-column label="用户名" prop="created_by" align="center" width="100px"></el-table-column>
+            <!-- <el-table-column label="操作内容" prop="row_id" align="center" width="100px"></el-table-column> -->
+            <el-table-column label="操作类型" align="center" width="180px">
+              <template slot-scope="scope">
+                <el-tag type="danger">{{recordType[scope.row.type]}}</el-tag>
+              </template>
+            </el-table-column>
+            <el-table-column label="操作记录" prop="content" align="center" width="120px"></el-table-column>
+            <el-table-column label="操作时间" prop="created_by" align="center" width="120px"></el-table-column>
+      </el-table>
+    </el-dialog>
   </div>
 </template>
 
@@ -149,7 +169,8 @@ import {
   TableName,
   FieldName,
   DataSummary,
-  DimensionStatus
+  DimensionStatus,
+  DimensionRecord
 } from "@/api/database.js";
 import { DimensionTable } from "@/api/dimension.js";
 import { getToken } from "@/api/services/cookie.js";
@@ -158,6 +179,11 @@ export default {
   name: "metaDatabase",
   data() {
     return {
+      // 用户状态
+      recordType: {
+        "0": "删除维度表",
+        "1": "新增维度表",
+      },
       // ===========================================================数据请求信息=====================================================================
       // 获取用户列表的参数对象
       requestInfo: {
@@ -196,7 +222,13 @@ export default {
         is_dimension: "",
         dimension_table: ""
       },
-      dimensionTable: []
+      dimensionTable: [],
+
+      recordDialogVisibleStatus: false,
+      recordInfo: {
+        row_id: ""
+      },
+      recordlist: [],
     };
   },
   // 发起数据处理请求
@@ -416,8 +448,20 @@ export default {
     },
     // ===========================================================待处理项=====================================================================
     // 操作日志点击
-    getDatabaseLog(databaseId) {
-      return this.$message.error("操作日志功能，待处理");
+    getDatabaseLog(row_id) {
+      console.log(row_id);
+      this.recordInfo.row_id = row_id;
+      DimensionRecord(this.recordInfo)
+        .then(res => {
+          if (res.code != 200) {
+            return this.$message.error("获取元数据记录列表失败");
+          }
+          this.recordlist = res.data;
+      this.recordDialogVisibleStatus = true;
+        })
+        .catch(error => {
+            return this.$message.error("获取元数据记录列表失败");
+        });
     }
   }
 };

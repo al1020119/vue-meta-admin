@@ -31,7 +31,7 @@
       </el-table-column>
       <el-table-column label="状态" align="center" width="120px">
         <template slot-scope="scope">
-          <el-tag type="userStatus[scope.row.status] == 1 ? success : danger">{{userStatus[scope.row.status]}}</el-tag>
+          <el-switch v-model="scope.row.status" @change="switchUserStatus(scope.row)"></el-switch>
         </template>
       </el-table-column>
       <el-table-column label="创建时间" prop="created_at" align="center" width="180px"></el-table-column>
@@ -393,7 +393,11 @@ export default {
     // 操作日志点击
     changeUserPassword(userId) {
       return this.$message.error("修改用户密码操作，待处理");
+    },
+    switchUserStatus(userinfo) {
+      return this.$message.error("开启和禁用用户操作，待处理");
     }
+
   }
 };
 </script>
