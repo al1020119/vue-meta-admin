@@ -142,19 +142,19 @@
     <el-dialog
       title="操作日志"
       :visible.sync="recordDialogVisibleStatus"
-      width="30%"
+      width="35%"
     >
       <el-table :data="recordlist" border stripe class="content-table">
             <el-table-column type="index" align="center" width="40px"></el-table-column>
-            <el-table-column label="用户名" prop="created_by" align="center" width="100px"></el-table-column>
+            <el-table-column label="用户名" prop="created_by" align="center" width="120px"></el-table-column>
             <!-- <el-table-column label="操作内容" prop="row_id" align="center" width="100px"></el-table-column> -->
             <el-table-column label="操作类型" align="center" width="180px">
               <template slot-scope="scope">
                 <el-tag type="danger">{{recordType[scope.row.type]}}</el-tag>
               </template>
             </el-table-column>
-            <el-table-column label="操作记录" prop="content" align="center" width="120px"></el-table-column>
-            <el-table-column label="操作时间" prop="created_by" align="center" width="120px"></el-table-column>
+            <el-table-column label="操作记录" prop="content" align="center" width="150px"></el-table-column>
+            <el-table-column label="操作时间" prop="created_at" align="center" width="180px"></el-table-column>
       </el-table>
     </el-dialog>
   </div>

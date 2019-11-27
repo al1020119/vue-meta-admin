@@ -36,6 +36,7 @@
       </el-table-column>
       <el-table-column label="创建时间" prop="created_at" align="center" width="180px"></el-table-column>
       <el-table-column label="更新时间" prop="updated_at" align="center" width="180px"></el-table-column>
+      <el-table-column label="最近访问" prop="last_access" align="center" width="180px"></el-table-column>
       <el-table-column label="用户备注" prop="remarks" align="center" width="150px"></el-table-column>
       <el-table-column label="操作" width="180px" align="center">
         <template slot-scope="scope">
