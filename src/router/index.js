@@ -98,6 +98,14 @@ const routes = [
           name: "数据库元数据"
         },
         component: () => import("../views/Meta/database.vue")
+      },      
+      {
+        path: "/metaChannel",
+        name: "MetaChannel",
+        meta: {
+          name: "申办渠道数据"
+        },
+        component: () => import("../views/Meta/channel.vue")
       },
       /*
       {
