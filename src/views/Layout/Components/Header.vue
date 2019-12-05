@@ -7,7 +7,7 @@
       <div class="user-info pull-left">
         <!-- <el-button type="danger" class="biScreen">可视化大屏</el-button> -->
         <img src="../../../assets/images/face.jpg" alt />
-        管理员
+        {{username}}
       </div>
       <div class="header-icon pull-left" @click="navExitAxtion">
         <svg-icon iconClass="exit" class="exit" />
@@ -17,7 +17,12 @@
 </template>
 
 <script>
+
 import { removeToken } from "@/api/services/cookie.js";
+import { computed } from '@vue/composition-api';
+
+import { mapGetters } from "vuex";
+
 export default {
   name: "layoutHeader",
   setup(props, { root }) {
@@ -34,6 +39,9 @@ export default {
       navMenuState,
       navExitAxtion
     };
+  },
+  computed: {
+      ...mapGetters("users",{username: "username",userlevel: "userlevel"})
   }
 };
 </script>

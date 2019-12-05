@@ -39,6 +39,8 @@ import { stripscript } from '@/utils/validate.js'
 import { Login } from '@/api/user.js' 
 import { setToken } from '@/api/services/cookie.js'
 
+import { mapMutations, mapActions } from "vuex";
+
 export default {
     name: "login",
     data() {
@@ -86,6 +88,15 @@ export default {
                 password: [
                     { validator: validatePassword, trigger: 'blur' }
                 ]
+            },
+            // ...mapActions
+            users2: {
+                username: "MetaTest2",
+                userlevel: ""
+            },
+            users3: {
+                username: "MetaTest3",
+                userlevel: ""
             }
         }
         // 登录表单操作
@@ -114,7 +125,7 @@ export default {
                         // 保存token
                         setToken(res.data.auth_key);
                         // 保存用户信息
-                        this.saveUserInfo(res);
+                        this.saveUserInfo1(res);
                         // 登录成功提示
                         this.$message.success("恭喜你，登录成功");
                         // 页面路由跳转
@@ -127,15 +138,28 @@ export default {
                 }
             });
        },
-       saveUserInfo(res) {
-           this.$store.commit('saveAuthKey',res.data.auth_key)
-           this.$store.commit('saveUsername',res.data.username)
-           this.$store.commit('saveUserLevel',res.data.user_level)
-           this.$store.commit('saveEmail',res.data.email)
-           this.$store.commit('saveStatus',res.data.status)
-           this.$store.commit('saveRemarks',res.data.remarks)
-       }
+       // ---------------- vuex实战： https://codesandbox.io/s/92kjy998qo, https://segmentfault.com/a/1190000017842777 ---------------- //
+       /** 方法1 */
+       saveUserInfo1(res) {
+           this.setUserName(res.data.username),
+           this.setUserLevel(res.data.user_level)
+       },
+       ...mapMutations('users', {setUserName:'SET_USERNAME', setUserLevel:'SET_USERLEVEL'}),
+
+       /** 方法2 */
+       saveUserInfo2(res) {
+           this.setUsersAction(this.users2)
+       },
+       ...mapActions('users', {setUsersAction: "usersAction"}),
+
+       /** 方法3 */
+       saveUserInfo3(res) {
+           this.usersAction(this.users3)
+       },
+       ...mapActions('users', ["usersAction"]),
+
     },
+
     props: {},
     watch: {},
 }
